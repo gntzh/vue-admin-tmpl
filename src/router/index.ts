@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { auth, logInLocally } from '@/composables/auth'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -14,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/LogIn.vue'),
     meta: {
       title: 'Log In',
+    },
+    beforeEnter: async (to, from) => {
+      if (auth.accessToken || (await logInLocally())) {
+        return (to.query.redirect || '/') as string
+      }
     },
   },
   {
@@ -38,7 +44,22 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach(async (to, from) => {})
+router.beforeEach(async (to, from) => {
+  if (to.meta.permissions) {
+    if (!auth.accessToken) {
+      if (await logInLocally()) {
+        return
+      } else {
+        return {
+          path: '/login',
+          query: {
+            redirect: to.fullPath,
+          },
+        }
+      }
+    }
+  }
+})
 
 router.afterEach((to, from, failure) => {
   if (to.meta.title) {
