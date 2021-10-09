@@ -97,6 +97,7 @@ const menuOptions = [
     :collapsed-width="48"
     :indent="24"
     :root-indent="16"
+    inverted
     v-model:value="activeKey"
   />
 </template>

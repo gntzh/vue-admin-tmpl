@@ -18,6 +18,7 @@ const collapsed = ref(false)
       :collapsed-width="48"
       :collapsed="collapsed"
       :native-scrollbar="false"
+      inverted
       @collapse="() => (collapsed = true)"
       @expand="() => (collapsed = false)"
       class="sider"
@@ -41,12 +42,14 @@ const collapsed = ref(false)
   </n-layout>
 </template>
 
-<style scoped lang="postcss">
+<style lang="postcss">
 .header {
   height: v-bind(headerHeight);
 }
 .content {
   margin-top: v-bind(headerHeight);
-  background-color: #f0f2f5;
+  @nest html:not(.dark) & {
+    background-color: #f0f2f5;
+  }
 }
 </style>
