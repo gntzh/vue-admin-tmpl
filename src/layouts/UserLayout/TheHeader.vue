@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
 import { NDropdown, NAvatar, NIcon } from 'naive-ui'
-import {
-  UserOutlined,
-  SettingOutlined,
-  LogoutOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-} from '@vicons/antd'
+
+import LogoutIcon from '~icons/ri/logout-circle-line'
+import MenuFoldIcon from '~icons/ri/menu-fold-line'
+import MenuUnfoldIcon from '~icons/ri/menu-unfold-line'
+import SettingsIcon from '~icons/ri/settings-3-line'
+import UserIcon from '~icons/ri/user-line'
 
 import { renderIcon } from '@/components/naive-ui'
 import { userInfo, logOut } from '@/composables/auth'
@@ -44,18 +43,18 @@ const userOptions = [
   {
     label: 'Profile',
     key: 'profile',
-    icon: () => renderIcon(UserOutlined),
+    icon: () => renderIcon(UserIcon),
   },
   {
     label: 'Settings',
     key: 'settings',
-    icon: () => renderIcon(SettingOutlined),
+    icon: () => renderIcon(SettingsIcon),
   },
   { type: 'divider', key: 'd1' },
   {
     label: 'Log Out',
     key: 'logout',
-    icon: () => renderIcon(LogoutOutlined),
+    icon: () => renderIcon(LogoutIcon),
   },
 ]
 </script>
@@ -64,22 +63,22 @@ const userOptions = [
   <div class="px-4 flex justify-between h-full">
     <div class="flex items-center hover:text-green-600">
       <n-icon size="18px" @click="emit('update:collapsed', !collapsed)">
-        <menu-unfold-outlined v-if="collapsed" />
-        <menu-fold-outlined v-else />
+        <menu-unfold-icon v-if="collapsed" />
+        <menu-fold-icon v-else />
       </n-icon>
     </div>
-    <n-dropdown
-      :options="userOptions"
-      @select="handleUserAction"
-      trigger="hover"
-      placement="bottom-end"
-    >
-      <div class="h-full px-3 flex items-center hover:bg-gray-100">
-        <n-avatar round size="small">
-          <n-icon><user-outlined /></n-icon>
-        </n-avatar>
-        <span class="ml-2">{{ userInfo.username }}</span>
-      </div>
-    </n-dropdown>
+      <n-dropdown
+        :options="userOptions"
+        @select="handleUserAction"
+        trigger="hover"
+        placement="bottom-end"
+      >
+        <div class="h-full px-3 flex items-center hover:bg-gray-100">
+          <n-avatar round size="small">
+            <n-icon><user-icon /></n-icon>
+          </n-avatar>
+          <span class="ml-2">{{ userInfo.username }}</span>
+        </div>
+      </n-dropdown>
   </div>
 </template>

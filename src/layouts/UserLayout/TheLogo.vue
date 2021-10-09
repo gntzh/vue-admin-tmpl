@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NIcon } from 'naive-ui'
-import { GithubOutlined } from '@vicons/antd'
+import GithubIcon from '~icons/ri/github-fill'
 
 const props = defineProps<{
   collapsed: boolean
@@ -14,7 +14,7 @@ const props = defineProps<{
     target="_blank"
   >
     <n-icon size="28px">
-      <github-outlined />
+      <github-icon />
     </n-icon>
     <span v-if="!collapsed" class="ml-3 text-xl font-semibold">GitHub</span>
   </a>

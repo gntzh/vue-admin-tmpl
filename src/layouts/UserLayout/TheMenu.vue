@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { h, ref } from 'vue'
 import { NMenu } from 'naive-ui'
-import {
-  DashboardOutlined,
-  BulbOutlined,
-  UserOutlined,
-  ExceptionOutlined,
-} from '@vicons/antd'
+
+import AboutIcon from '~icons/ri/lightbulb-line'
+import ErrorPageIcon from '~icons/ri/error-warning-line'
+import DashboardIcon from '~icons/ri/dashboard-3-line'
+import UserIcon from '~icons/ri/user-line'
+
 import { RouterLink } from 'vue-router'
 import { renderIcon } from '@/components/naive-ui'
 
@@ -21,12 +21,12 @@ const menuOptions = [
     label: () =>
       h(RouterLink, { to: '/dashboard' }, { default: () => 'Dashboard' }),
     key: 'dashboard',
-    icon: () => renderIcon(DashboardOutlined),
+    icon: () => renderIcon(DashboardIcon),
   },
   {
     label: 'Account',
     key: 'account',
-    icon: () => renderIcon(UserOutlined),
+    icon: () => renderIcon(UserIcon),
     children: [
       {
         label: () =>
@@ -51,7 +51,7 @@ const menuOptions = [
   {
     label: 'Error Pages',
     key: 'error-pages',
-    icon: () => renderIcon(ExceptionOutlined),
+    icon: () => renderIcon(ErrorPageIcon),
     children: [
       {
         label: () =>
@@ -85,7 +85,7 @@ const menuOptions = [
   {
     label: () => h(RouterLink, { to: '/about' }, { default: () => 'About' }),
     key: 'about',
-    icon: () => renderIcon(BulbOutlined),
+    icon: () => renderIcon(AboutIcon),
   },
 ]
 </script>

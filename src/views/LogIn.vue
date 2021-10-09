@@ -11,7 +11,9 @@ import {
   NIcon,
   FormRules,
 } from 'naive-ui'
-import { LockOutlined, UserOutlined } from '@vicons/antd'
+
+import PasswordIcon from '~icons/ri/lock-line'
+import UsernameIcon from '~icons/ri/user-line'
 
 import { logIn } from '@/composables/auth'
 
@@ -70,7 +72,7 @@ function handleLogIn(evt: Event) {
           <n-input v-model:value="formData.username" placeholder="Usernmae">
             <template #prefix>
               <n-icon>
-                <user-outlined></user-outlined>
+                <username-icon></username-icon>
               </n-icon>
             </template>
           </n-input>
@@ -84,7 +86,7 @@ function handleLogIn(evt: Event) {
           >
             <template #prefix>
               <n-icon>
-                <lock-outlined></lock-outlined>
+                <password-icon></password-icon>
               </n-icon>
             </template>
           </n-input>
