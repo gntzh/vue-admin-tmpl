@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "@vueuse/core": "^6.5.3",
-    "axios": "^0.21.4",
-    "axios-case-converter": "^0.8.1",
+    "axios": "^0.24.0",
+    "axios-case-converter": "^0.9.0",
     "vue": "^3.2.19",
     "vue-router": "^4.0.11"
   },
@@ -18,12 +18,12 @@
     "@vitejs/plugin-vue": "^1.9.3",
     "@vue/compiler-sfc": "^3.2.19",
     "autoprefixer": "^10.3.6",
-    "naive-ui": "^2.19.5",
-    "postcss": "^8.3.9",
+    "naive-ui": "^2.20.0",
+    "postcss": "^8.3.11",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.2.16",
+    "tailwindcss": "^2.2.19",
     "typescript": "^4.4.3",
-    "unplugin-icons": "^0.12.12",
+    "unplugin-icons": "^0.12.16",
     "vite": "^2.6.5",
     "vue-tsc": "^0.28.0"
   },
