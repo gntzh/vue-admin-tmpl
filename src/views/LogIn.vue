@@ -49,16 +49,27 @@ function handleLogIn(evt: Event) {
 <template>
   <div
     class="
-      bg-gray-100
       min-h-screen
       flex flex-col
       items-center
       justify-between
       pt-20
+      bg-gray-100
+      dark:bg-gray-900
     "
   >
-    <div class="p-6 w-full max-w-sm bg-white shadow-md rounded-md">
-      <h1 class="my-8 text-center text-3xl font-extrabold text-gray-900">
+    <div
+      class="p-6 w-full max-w-sm shadow-md rounded-md bg-white dark:bg-gray-800"
+    >
+      <h1
+        class="
+          my-8
+          text-center text-3xl
+          font-extrabold
+          text-gray-900
+          dark:text-gray-50
+        "
+      >
         Admin Template
       </h1>
       <n-form
@@ -96,9 +107,20 @@ function handleLogIn(evt: Event) {
             <n-checkbox v-model:checked="formData.rememberMe"
               >Remember me</n-checkbox
             >
-            <n-element tag="a" href="#" style="color: var(--info-color)">
-              Forgot your password?
-            </n-element>
+            <router-link
+              :to="{ name: 'recovery' }"
+              custom
+              v-slot="{ navigate, href }"
+            >
+              <n-element
+                tag="a"
+                :href="href"
+                @click="navigate"
+                style="color: var(--info-color)"
+              >
+                Forgot your password?
+              </n-element>
+            </router-link>
           </div>
         </n-form-item>
         <n-form-item>
@@ -108,6 +130,8 @@ function handleLogIn(evt: Event) {
         </n-form-item>
       </n-form>
     </div>
-    <footer class="mt-12 mb-6">© 2021 Grant</footer>
+    <footer class="mt-12 mb-6 text-gray-500 dark:text-gray-400">
+      © 2021 Grant
+    </footer>
   </div>
 </template>
