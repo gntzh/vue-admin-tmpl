@@ -62,7 +62,7 @@ function handleSubmit(evt: Event) {
 <template>
   <n-layout
     class="min-h-screen"
-    content-style="display: flex; justify-content: center;"
+    content-style="display: flex; justify-content: center; padding-top: 5rem;"
   >
     <n-card size="huge" :bordered="false" class="max-w-md mx-4">
       <n-h1>Recover you account</n-h1>
