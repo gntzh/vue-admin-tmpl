@@ -49,6 +49,30 @@ const routes: Array<RouteRecordRaw> = [
       }
     },
   },
+  {
+    path: '/recovery',
+    name: 'recovery',
+    component: () => import('@/views/auth/Recovery.vue'),
+    meta: {
+      title: 'Verify Email',
+    },
+  },
+  {
+    path: '/reset-password',
+    name: 'reset-password',
+    component: () => import('@/views/auth/ResetPassword.vue'),
+    meta: {
+      title: 'Verify Email',
+    },
+  },
+  {
+    path: '/verify-email',
+    name: 'verify-email',
+    component: () => import('@/views/auth/VerifyEmail.vue'),
+    meta: {
+      title: 'Verify Email',
+    },
+  },
   ...errorPages,
   {
     path: '/',

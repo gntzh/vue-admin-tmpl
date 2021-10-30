@@ -11,3 +11,7 @@ export interface IUserInfo {
   username: string
   email: string
 }
+
+export interface IMessageRes {
+  msg: string
+}

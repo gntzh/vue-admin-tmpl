@@ -1,5 +1,10 @@
 import http from '@/utils/http'
-import { ILogInGetTokenRes, IRefreshTokenRes, IUserInfo } from './schemas'
+import {
+  ILogInGetTokenRes,
+  IMessageRes,
+  IRefreshTokenRes,
+  IUserInfo,
+} from './schemas'
 
 export async function logInGetToken(username: string, password: string) {
   const params = new URLSearchParams()
@@ -17,4 +22,16 @@ export async function refreshToken(refreshToken: string) {
 
 export async function getMe() {
   return http.get<IUserInfo>('users/me')
+}
+
+export async function recoverAccount(email: string) {
+  return http.post<IMessageRes>('auth/recovery', { email })
+}
+
+export async function resetPassword(token: string, newPassword: string) {
+  return http.post<IMessageRes>('auth/password/reset', { token, newPassword })
+}
+
+export async function confirmEmailVerification(token: string) {
+  return http.post<IMessageRes>('auth/emails/confirm-verification', { token })
 }
