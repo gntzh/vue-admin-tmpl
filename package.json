@@ -7,25 +7,25 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^6.5.3",
+    "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",
     "axios-case-converter": "^0.9.0",
-    "vue": "^3.2.19",
-    "vue-router": "^4.0.11"
+    "vue": "^3.2.26",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@iconify-json/ri": "^1.0.1",
-    "@vitejs/plugin-vue": "^1.9.3",
-    "@vue/compiler-sfc": "^3.2.19",
-    "autoprefixer": "^10.3.6",
-    "naive-ui": "^2.20.0",
-    "postcss": "^8.3.11",
-    "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.2.19",
-    "typescript": "^4.4.3",
-    "unplugin-icons": "^0.12.16",
-    "vite": "^2.6.5",
-    "vue-tsc": "^0.28.0"
+    "@iconify-json/ri": "^1.0.2",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/compiler-sfc": "^3.2.26",
+    "autoprefixer": "^10.4.0",
+    "naive-ui": "^2.21.5",
+    "postcss": "^8.4.5",
+    "postcss-preset-env": "^7.0.1",
+    "tailwindcss": "^3.0.1",
+    "typescript": "^4.5.3",
+    "unplugin-icons": "^0.12.23",
+    "vite": "^2.7.1",
+    "vue-tsc": "^0.29.8"
   },
   "prettier": {
     "tabWidth": 2,
