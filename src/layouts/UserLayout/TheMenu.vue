@@ -6,6 +6,7 @@ import AboutIcon from '~icons/ri/lightbulb-line'
 import ErrorPageIcon from '~icons/ri/error-warning-line'
 import DashboardIcon from '~icons/ri/dashboard-3-line'
 import UserIcon from '~icons/ri/user-line'
+import AdminIcon from '~icons/ri/admin-line'
 
 import { RouterLink } from 'vue-router'
 import { renderIcon } from '@/components/naive-ui'
@@ -45,6 +46,33 @@ const menuOptions = [
             { default: () => 'Settings' },
           ),
         key: 'account/settings',
+      },
+    ],
+  },
+  {
+    label: 'Admin',
+    key: 'admin',
+    icon: () => renderIcon(AdminIcon),
+    children: [
+      {
+        label: () =>
+          h(
+            RouterLink,
+            { to: { name: 'admin/users' } },
+            { default: () => 'Users' },
+          ),
+        key: 'admin/users',
+      },
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: { name: 'admin/users/create' },
+            },
+            { default: () => 'Create User' },
+          ),
+        key: 'account/users/create',
       },
     ],
   },

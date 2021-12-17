@@ -118,6 +118,33 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/account/Settings.vue'),
       },
       {
+        path: 'admin/users',
+        name: 'admin/users',
+        meta: {
+          title: 'Users',
+          permissions: ['admin'],
+        },
+        component: () => import('@/views/admin/Users.vue'),
+      },
+      {
+        path: 'admin/users/create',
+        name: 'admin/users/create',
+        meta: {
+          title: 'Create User',
+          permissions: ['admin'],
+        },
+        component: () => import('@/views/admin/CreateUser.vue'),
+      },
+      {
+        path: 'admin/users/:id/edit',
+        name: 'admin/users/edit',
+        meta: {
+          title: 'Edit User',
+          permissions: ['admin'],
+        },
+        component: () => import('@/views/admin/EditUser.vue'),
+      },
+      {
         path: 'about',
         name: 'about',
         meta: {

@@ -34,7 +34,7 @@ const collapsed = ref(false)
         :native-scrollbar="false"
         position="absolute"
         class="content"
-        content-style="padding: 12px;"
+        content-style="padding: 16px;"
       >
         <router-view />
       </n-layout-content>

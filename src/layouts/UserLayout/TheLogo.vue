@@ -10,12 +10,12 @@ const props = defineProps<{
 <template>
   <a
     class="mx-4 my-3 flex justify-center items-center"
-    href="https://github.com/grantzs"
+    href="https://github.com/gntzh"
     target="_blank"
   >
     <n-icon size="28px">
       <github-icon />
     </n-icon>
-    <span v-if="!collapsed" class="ml-3 text-xl font-semibold">GitHub</span>
+    <span v-if="!collapsed" class="ml-3 text-xl font-semibold">Grant</span>
   </a>
 </template>

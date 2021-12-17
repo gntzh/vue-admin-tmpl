@@ -9,6 +9,8 @@ export interface IUserInfo {
   id: string
   username: string
   email: string
+  emailVerified: boolean
+  isSuperuser: boolean
 }
 
 const auth = reactive<IAuth>({
@@ -19,6 +21,8 @@ const userInfo = reactive<IUserInfo>({
   id: '',
   username: '',
   email: '',
+  emailVerified: false,
+  isSuperuser: false,
 })
 
 function SET_ACCESS_TOKEN(token: string) {
@@ -40,10 +44,16 @@ async function logOut() {
 async function getUserInfo() {
   try {
     const { data } = await authAPI.getMe()
-    userInfo.id = data.id
-    userInfo.username = data.username
-    userInfo.email = data.email
-    return true
+    if (data.isSuperuser) {
+      userInfo.id = data.id
+      userInfo.username = data.username
+      userInfo.email = data.email
+      userInfo.emailVerified = data.emailVerified
+      userInfo.isSuperuser = data.isSuperuser
+      return true
+    } else {
+      return false
+    }
   } catch (error) {
     logOut()
     return false
@@ -75,7 +85,12 @@ async function logInLocally() {
             data: { accessToken },
           } = await authAPI.refreshToken(refreshToken)
           SET_ACCESS_TOKEN(accessToken)
-          return await getUserInfo()
+          if (await getUserInfo()) {
+            return true
+          } else {
+            SET_ACCESS_TOKEN('')
+            return false
+          }
         } catch (error) {}
       }
     } catch (error) {}
@@ -94,7 +109,12 @@ async function logIn(
     if (rememberMe) {
       window.localStorage.setItem('refreshToken', data.refreshToken)
     }
-    return await getUserInfo()
+    if (await getUserInfo()) {
+      return true
+    } else {
+      SET_ACCESS_TOKEN('')
+      return false
+    }
   } catch (e) {
     return false
   }
