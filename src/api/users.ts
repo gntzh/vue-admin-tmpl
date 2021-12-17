@@ -19,6 +19,10 @@ export async function updateUser(id: string, data: schemas.IUserUpdate) {
   return http.patch<schemas.IUserInfoAll>(`users/${id}/`, data)
 }
 
+export async function deleteUser(id: string) {
+  return http.delete<schemas.IUserInfo>(`users/${id}/`)
+}
+
 export async function updateProfile(data: schemas.IProfileUpdate) {
   return http.patch<schemas.IUserInfo>(`users/me/`, data)
 }

@@ -10,9 +10,10 @@ import {
   NButton,
   useMessage,
   NDatePicker,
+  NPopconfirm,
 } from 'naive-ui'
 import { useRouter, useRoute } from 'vue-router'
-import { getUser, updateUser } from '@/api/users'
+import { deleteUser, getUser, updateUser } from '@/api/users'
 
 const router = useRouter()
 const route = useRoute()
@@ -73,6 +74,16 @@ function handleSubmit(evt: Event) {
     }
   })
 }
+
+async function handleDelete() {
+  try {
+    await deleteUser(userId)
+    message.success('Delete successfully')
+    router.push({ name: 'admin/users' })
+  } catch (error) {
+    message.error('Unknown error')
+  }
+}
 </script>
 
 <template>
@@ -115,7 +126,13 @@ function handleSubmit(evt: Event) {
         <n-form-item path="dateJoined" label="Date Joined">
           <n-date-picker v-model:value="formData.dateJoined" type="datetime" />
         </n-form-item>
-        <div class="flex justify-end">
+        <div class="flex justify-between">
+          <n-popconfirm @positive-click="handleDelete">
+            <template #trigger>
+              <n-button ghost type="error"> Delete user </n-button>
+            </template>
+            一切都将一去杳然，任何人都无法将其捕获。
+          </n-popconfirm>
           <n-button ghost type="primary" @click="handleSubmit"> Save </n-button>
         </div>
       </n-form>
