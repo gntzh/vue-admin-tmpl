@@ -131,7 +131,7 @@ async function handleDelete() {
             <template #trigger>
               <n-button ghost type="error"> Delete user </n-button>
             </template>
-            一切都将一去杳然，任何人都无法将其捕获。
+            This user will be permanently deleted
           </n-popconfirm>
           <n-button ghost type="primary" @click="handleSubmit"> Save </n-button>
         </div>
