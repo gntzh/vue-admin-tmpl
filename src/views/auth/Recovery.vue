@@ -82,7 +82,7 @@ function handleSubmit(evt: Event) {
           </n-input>
         </n-form-item>
         <n-form-item>
-          <n-button block type="primary" @click="handleSubmit">
+          <n-button ghost block type="primary" @click="handleSubmit">
             Request password reset
           </n-button>
         </n-form-item>

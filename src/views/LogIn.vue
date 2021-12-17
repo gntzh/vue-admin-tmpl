@@ -14,12 +14,14 @@ import {
 
 import PasswordIcon from '~icons/ri/lock-line'
 import UsernameIcon from '~icons/ri/user-line'
+import { useMessage } from 'naive-ui'
 
 import { logIn } from '@/composables/auth'
 
 const router = useRouter()
 const route = useRoute()
 
+const message = useMessage()
 const formRef = ref<typeof NForm>(null!)
 const formData = reactive({
   username: '',
@@ -33,13 +35,14 @@ const formRules: FormRules = {
 
 function handleLogIn(evt: Event) {
   evt.preventDefault()
-  console.log(formData)
   formRef.value.validate(async (errors?: any) => {
     if (!errors) {
       if (
         await logIn(formData.username, formData.password, formData.rememberMe)
       ) {
         router.push((route.query.redirect || '/') as string)
+      } else {
+        message.error('Wrong username or password for a superuser.')
       }
     }
   })
@@ -80,7 +83,7 @@ function handleLogIn(evt: Event) {
         ref="formRef"
       >
         <n-form-item path="username">
-          <n-input v-model:value="formData.username" placeholder="Usernmae">
+          <n-input v-model:value="formData.username" placeholder="Username">
             <template #prefix>
               <n-icon>
                 <username-icon></username-icon>
@@ -124,7 +127,7 @@ function handleLogIn(evt: Event) {
           </div>
         </n-form-item>
         <n-form-item>
-          <n-button type="primary" block @click="handleLogIn">
+          <n-button ghost type="primary" block @click="handleLogIn">
             Log In
           </n-button>
         </n-form-item>

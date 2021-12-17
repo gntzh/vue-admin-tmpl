@@ -28,20 +28,14 @@ const message = useMessage()
 const messageOption: MessageOptions = { duration: 5000 }
 
 const token = route.query.token
-console.log(
-  route.fullPath,
-  router,
-  token,
-  typeof token,
-  typeof token == 'string',
-)
+
 const is_valid = Boolean(token && typeof token == 'string')
 if (!is_valid) {
   message.warning('Invalid link', messageOption)
   router.push('/recovery')
 }
 
-const [is_visable, toggleVisable] = useToggle(false)
+const [is_visible, toggleVisible] = useToggle(false)
 const formRef = ref<typeof NForm>(null!)
 const formData = reactive({
   password1: '',
@@ -111,12 +105,12 @@ function handleSubmit(evt: Event) {
         <n-form-item path="password1">
           <n-input
             v-model:value="formData.password1"
-            :type="is_visable ? 'text' : 'password'"
+            :type="is_visible ? 'text' : 'password'"
             placeholder="Password"
           >
             <template #suffix>
-              <n-icon @click="toggleVisable">
-                <eye-icon v-if="is_visable" />
+              <n-icon @click="toggleVisible()">
+                <eye-icon v-if="is_visible" />
                 <eye-off-icon v-else />
               </n-icon>
             </template>
@@ -125,12 +119,12 @@ function handleSubmit(evt: Event) {
         <n-form-item first path="password2">
           <n-input
             v-model:value="formData.password2"
-            :type="is_visable ? 'text' : 'password'"
+            :type="is_visible ? 'text' : 'password'"
             placeholder="Confirm Password"
           >
             <template #suffix>
-              <n-icon @click="toggleVisable">
-                <eye-icon v-if="is_visable" />
+              <n-icon @click="toggleVisible()">
+                <eye-icon v-if="is_visible" />
                 <eye-off-icon v-else />
               </n-icon>
             </template>
